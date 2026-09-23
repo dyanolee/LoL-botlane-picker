@@ -992,7 +992,11 @@
         setDataStatus(`Import failed: ${err.message}`, 'text-rose-400');
       }
     });
-
+    // Data status + IMPORT JSON are hidden for visitors. Add ?admin to the URL to show them.
+    if (new URLSearchParams(location.search).has('admin')) {
+      $('#dataFooter').classList.remove('hidden');
+      $('#dataFooter').classList.add('flex');
+    }
     loadChampions().then(loadExternalDb);
 </script>
 </body>
