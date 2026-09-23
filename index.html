@@ -656,8 +656,8 @@
     function pickCondition(ally, enemies) {
       const a = ally ? 1 : 0, e = enemies.length;
       if (a === 0 && e === 0) return { id: 1, label: 'First pick', formula: 'Tier score' };
-      if (a === 1 && e === 1) return { id: 2, label: '1 ally · 1 enemy', formula: 'Synergy × 0.7 + Counter × 0.3' };
-      if (a === 1 && e === 2) return { id: 3, label: '1 ally · 2 enemies', formula: 'Synergy × 0.6 + Avg Counter × 0.4' };
+      if (a === 1 && e === 1) return { id: 2, label: '1 ally · 1 enemy', formula: 'Synergy × 0.8 + Counter × 0.2' };
+      if (a === 1 && e === 2) return { id: 3, label: '1 ally · 2 enemies', formula: 'Synergy × 0.7 + Avg Counter × 0.3' };
       if (a === 0 && e >= 1) return { id: 4, label: `0 allies · ${e} ${e === 1 ? 'enemy' : 'enemies'}`, formula: 'Avg Counter × 1.0' };
       // Not in the spec (1 ally, 0 enemies): score on synergy alone.
       return { id: 5, label: '1 ally · 0 enemies', formula: 'Synergy × 1.0' };
@@ -679,8 +679,8 @@
         let score;
         switch (cond.id) {
           case 1: score = tier; break;
-          case 2: score = syn.value * 0.7 + avgCounter * 0.3; break;
-          case 3: score = syn.value * 0.6 + avgCounter * 0.4; break;
+          case 2: score = syn.value * 0.8 + avgCounter * 0.2; break;
+          case 3: score = syn.value * 0.7 + avgCounter * 0.3; break;
           case 4: score = avgCounter * 1.0; break;
           case 5: score = syn.value; break;
         }
